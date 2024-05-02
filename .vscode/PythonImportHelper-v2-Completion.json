@@ -40,6 +40,30 @@
         "documentation": {}
     },
     {
+        "label": "path",
+        "importPath": "django.urls",
+        "description": "django.urls",
+        "isExtraImport": true,
+        "detail": "django.urls",
+        "documentation": {}
+    },
+    {
+        "label": "path",
+        "importPath": "django.urls",
+        "description": "django.urls",
+        "isExtraImport": true,
+        "detail": "django.urls",
+        "documentation": {}
+    },
+    {
+        "label": "include",
+        "importPath": "django.urls",
+        "description": "django.urls",
+        "isExtraImport": true,
+        "detail": "django.urls",
+        "documentation": {}
+    },
+    {
         "label": "render",
         "importPath": "django.shortcuts",
         "description": "django.shortcuts",
@@ -73,14 +97,6 @@
         "documentation": {}
     },
     {
-        "label": "path",
-        "importPath": "django.urls",
-        "description": "django.urls",
-        "isExtraImport": true,
-        "detail": "django.urls",
-        "documentation": {}
-    },
-    {
         "label": "get_wsgi_application",
         "importPath": "django.core.wsgi",
         "description": "django.core.wsgi",
@@ -104,6 +120,24 @@
         "description": "food.apps",
         "peekOfCode": "class FoodConfig(AppConfig):\n    default_auto_field = 'django.db.models.BigAutoField'\n    name = 'food'",
         "detail": "food.apps",
+        "documentation": {}
+    },
+    {
+        "label": "urlpatterns",
+        "kind": 5,
+        "importPath": "food.urls",
+        "description": "food.urls",
+        "peekOfCode": "urlpatterns = [\n    path('', views.home),\n]",
+        "detail": "food.urls",
+        "documentation": {}
+    },
+    {
+        "label": "home",
+        "kind": 2,
+        "importPath": "food.views",
+        "description": "food.views",
+        "peekOfCode": "def home(request):\n    data = [\n        {\n            \"strMeal\": \"BeaverTails\",\n            \"strMealThumb\": \"https://www.themealdb.com/images/media/meals/ryppsv1511815505.jpg\",\n            \"idMeal\": \"52928\"\n        },\n        {\n            \"strMeal\": \"Breakfast Potatoes\",\n            \"strMealThumb\": \"https://www.themealdb.com/images/media/meals/1550441882.jpg\",",
+        "detail": "food.views",
         "documentation": {}
     },
     {
@@ -147,7 +181,7 @@
         "kind": 5,
         "importPath": "simple_site.settings",
         "description": "simple_site.settings",
-        "peekOfCode": "ALLOWED_HOSTS = []\n# Application definition\nINSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',\n    'django.contrib.staticfiles',\n]",
+        "peekOfCode": "ALLOWED_HOSTS = []\n# Application definition\nINSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',\n    'django.contrib.staticfiles',\n    'food'",
         "detail": "simple_site.settings",
         "documentation": {}
     },
@@ -156,7 +190,7 @@
         "kind": 5,
         "importPath": "simple_site.settings",
         "description": "simple_site.settings",
-        "peekOfCode": "INSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',\n    'django.contrib.staticfiles',\n]\nMIDDLEWARE = [\n    'django.middleware.security.SecurityMiddleware',",
+        "peekOfCode": "INSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',\n    'django.contrib.staticfiles',\n    'food'\n]\nMIDDLEWARE = [",
         "detail": "simple_site.settings",
         "documentation": {}
     },
@@ -174,7 +208,7 @@
         "kind": 5,
         "importPath": "simple_site.settings",
         "description": "simple_site.settings",
-        "peekOfCode": "ROOT_URLCONF = 'simple_site.urls'\nTEMPLATES = [\n    {\n        'BACKEND': 'django.template.backends.django.DjangoTemplates',\n        'DIRS': [],\n        'APP_DIRS': True,\n        'OPTIONS': {\n            'context_processors': [\n                'django.template.context_processors.debug',\n                'django.template.context_processors.request',",
+        "peekOfCode": "ROOT_URLCONF = 'simple_site.urls'\nTEMPLATES = [\n    {\n        'BACKEND': 'django.template.backends.django.DjangoTemplates',\n        'DIRS': ['templates'],\n        'APP_DIRS': True,\n        'OPTIONS': {\n            'context_processors': [\n                'django.template.context_processors.debug',\n                'django.template.context_processors.request',",
         "detail": "simple_site.settings",
         "documentation": {}
     },
@@ -183,7 +217,7 @@
         "kind": 5,
         "importPath": "simple_site.settings",
         "description": "simple_site.settings",
-        "peekOfCode": "TEMPLATES = [\n    {\n        'BACKEND': 'django.template.backends.django.DjangoTemplates',\n        'DIRS': [],\n        'APP_DIRS': True,\n        'OPTIONS': {\n            'context_processors': [\n                'django.template.context_processors.debug',\n                'django.template.context_processors.request',\n                'django.contrib.auth.context_processors.auth',",
+        "peekOfCode": "TEMPLATES = [\n    {\n        'BACKEND': 'django.template.backends.django.DjangoTemplates',\n        'DIRS': ['templates'],\n        'APP_DIRS': True,\n        'OPTIONS': {\n            'context_processors': [\n                'django.template.context_processors.debug',\n                'django.template.context_processors.request',\n                'django.contrib.auth.context_processors.auth',",
         "detail": "simple_site.settings",
         "documentation": {}
     },
@@ -273,7 +307,7 @@
         "kind": 5,
         "importPath": "simple_site.urls",
         "description": "simple_site.urls",
-        "peekOfCode": "urlpatterns = [\n    path('admin/', admin.site.urls),\n]",
+        "peekOfCode": "urlpatterns = [\n    path('admin/', admin.site.urls),\n    path(\"food/\",include(\"food.urls\"))\n]",
         "detail": "simple_site.urls",
         "documentation": {}
     },
