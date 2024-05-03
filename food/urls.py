@@ -6,5 +6,6 @@ urlpatterns = [
     path('user/',views.User,name='User'),
     path('about/',views.about,name='about'),
     path('contact/',views.contact,name='contact'),
-    path("users/",views.Users,name='Users')
+    path("users/",views.Users,name='Users'),
+    path("delete/<int:roll>",views.delete_user,name='delete_user'),
 ]

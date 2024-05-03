@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from food.forms import ContactForm
 from . import models
 # Create your views here.
@@ -90,3 +90,8 @@ def contact(request):
 def Users(request):
     student = models.Student.objects.all()
     return render(request,'users.html',{'data':student})
+
+
+def delete_user(request,roll):
+    std = models.Student.objects.get(pk=roll).delete()
+    return redirect('Users')

@@ -19,7 +19,7 @@
         <td>{{i.name}}</td>
         <td>{{i.email}}</td>
         <td>{{i.address}}</td>
-        <td><a class="btn btn-danger">Delete</a></td>
+        <td><a href="{% url 'delete_user' i.roll %}" class="btn btn-danger">Delete</a></td>
       </tr>
       {% endfor %}
 
