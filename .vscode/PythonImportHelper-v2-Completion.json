@@ -24,6 +24,14 @@
         "documentation": {}
     },
     {
+        "label": "forms",
+        "importPath": "django",
+        "description": "django",
+        "isExtraImport": true,
+        "detail": "django",
+        "documentation": {}
+    },
+    {
         "label": "models",
         "importPath": "django.db",
         "description": "django.db",
@@ -64,11 +72,27 @@
         "documentation": {}
     },
     {
+        "label": "contact",
+        "importPath": "food.views",
+        "description": "food.views",
+        "isExtraImport": true,
+        "detail": "food.views",
+        "documentation": {}
+    },
+    {
         "label": "render",
         "importPath": "django.shortcuts",
         "description": "django.shortcuts",
         "isExtraImport": true,
         "detail": "django.shortcuts",
+        "documentation": {}
+    },
+    {
+        "label": "ContactForm",
+        "importPath": "food.forms",
+        "description": "food.forms",
+        "isExtraImport": true,
+        "detail": "food.forms",
         "documentation": {}
     },
     {
@@ -123,11 +147,20 @@
         "documentation": {}
     },
     {
+        "label": "ContactForm",
+        "kind": 6,
+        "importPath": "food.forms",
+        "description": "food.forms",
+        "peekOfCode": "class ContactForm(forms.Form):\n    name = forms.CharField(label='User Name')\n    email = forms.EmailField(label='Email')\n    # age = forms.IntegerField()\n    # weight = forms.FloatField()\n    # file = forms.FileField()\n    # birthday = forms.DateField(widget=forms.DateInput(attrs={'type':'date'}))\n    # appointment = forms.DateField(widget=forms.DateInput(attrs={'type':'datetime-local'}))\n    # # check = forms.BooleanField()\n    # CHOICES = [('S','Small'),('M','Medium'),('L','Large')]",
+        "detail": "food.forms",
+        "documentation": {}
+    },
+    {
         "label": "urlpatterns",
         "kind": 5,
         "importPath": "food.urls",
         "description": "food.urls",
-        "peekOfCode": "urlpatterns = [\n    path('', views.home),\n]",
+        "peekOfCode": "urlpatterns = [\n    path('', views.home),\n    path('user/',views.User,name='User'),\n    path('about/',views.about,name='about'),\n    path('contact/',views.contact,name='contact')\n]",
         "detail": "food.urls",
         "documentation": {}
     },
@@ -137,6 +170,33 @@
         "importPath": "food.views",
         "description": "food.views",
         "peekOfCode": "def home(request):\n    data = [\n        {\n            \"strMeal\": \"BeaverTails\",\n            \"strMealThumb\": \"https://www.themealdb.com/images/media/meals/ryppsv1511815505.jpg\",\n            \"idMeal\": \"52928\"\n        },\n        {\n            \"strMeal\": \"Breakfast Potatoes\",\n            \"strMealThumb\": \"https://www.themealdb.com/images/media/meals/1550441882.jpg\",",
+        "detail": "food.views",
+        "documentation": {}
+    },
+    {
+        "label": "User",
+        "kind": 2,
+        "importPath": "food.views",
+        "description": "food.views",
+        "peekOfCode": "def User(request):\n    return render(request,'form.html')\ndef about(request):\n    if request.method == 'POST':\n        name = request.POST.get('username')\n        email = request.POST.get('email')\n        return render(request,'about.html',{'name':name,'email':email})\n    return render(request,'about.html')\ndef contact(request):\n    if request.method=='POST':",
+        "detail": "food.views",
+        "documentation": {}
+    },
+    {
+        "label": "about",
+        "kind": 2,
+        "importPath": "food.views",
+        "description": "food.views",
+        "peekOfCode": "def about(request):\n    if request.method == 'POST':\n        name = request.POST.get('username')\n        email = request.POST.get('email')\n        return render(request,'about.html',{'name':name,'email':email})\n    return render(request,'about.html')\ndef contact(request):\n    if request.method=='POST':\n        form = ContactForm(request.POST,request.FILES)\n        if form.is_valid():",
+        "detail": "food.views",
+        "documentation": {}
+    },
+    {
+        "label": "contact",
+        "kind": 2,
+        "importPath": "food.views",
+        "description": "food.views",
+        "peekOfCode": "def contact(request):\n    if request.method=='POST':\n        form = ContactForm(request.POST,request.FILES)\n        if form.is_valid():\n            file = form.cleaned_data['file']\n            with open('./food/upload/'+ file.name, 'wb+') as dest:\n                for chunk in file.chunks():\n                    dest.write(chunk)\n            print(form.cleaned_data)\n            return render(request,'djangoform.html',{'form':form})",
         "detail": "food.views",
         "documentation": {}
     },
@@ -181,7 +241,7 @@
         "kind": 5,
         "importPath": "simple_site.settings",
         "description": "simple_site.settings",
-        "peekOfCode": "ALLOWED_HOSTS = []\n# Application definition\nINSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',\n    'django.contrib.staticfiles',\n    'food'",
+        "peekOfCode": "ALLOWED_HOSTS = []\n# Application definition\nINSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',\n    'django.contrib.staticfiles',\n    'food',",
         "detail": "simple_site.settings",
         "documentation": {}
     },
@@ -190,7 +250,25 @@
         "kind": 5,
         "importPath": "simple_site.settings",
         "description": "simple_site.settings",
-        "peekOfCode": "INSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',\n    'django.contrib.staticfiles',\n    'food'\n]\nMIDDLEWARE = [",
+        "peekOfCode": "INSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',\n    'django.contrib.staticfiles',\n    'food',\n    \"crispy_forms\",\n    \"crispy_bootstrap5\",",
+        "detail": "simple_site.settings",
+        "documentation": {}
+    },
+    {
+        "label": "CRISPY_ALLOWED_TEMPLATE_PACKS",
+        "kind": 5,
+        "importPath": "simple_site.settings",
+        "description": "simple_site.settings",
+        "peekOfCode": "CRISPY_ALLOWED_TEMPLATE_PACKS = \"bootstrap5\"\nCRISPY_TEMPLATE_PACK = \"bootstrap5\"\nMIDDLEWARE = [\n    'django.middleware.security.SecurityMiddleware',\n    'django.contrib.sessions.middleware.SessionMiddleware',\n    'django.middleware.common.CommonMiddleware',\n    'django.middleware.csrf.CsrfViewMiddleware',\n    'django.contrib.auth.middleware.AuthenticationMiddleware',\n    'django.contrib.messages.middleware.MessageMiddleware',\n    'django.middleware.clickjacking.XFrameOptionsMiddleware',",
+        "detail": "simple_site.settings",
+        "documentation": {}
+    },
+    {
+        "label": "CRISPY_TEMPLATE_PACK",
+        "kind": 5,
+        "importPath": "simple_site.settings",
+        "description": "simple_site.settings",
+        "peekOfCode": "CRISPY_TEMPLATE_PACK = \"bootstrap5\"\nMIDDLEWARE = [\n    'django.middleware.security.SecurityMiddleware',\n    'django.contrib.sessions.middleware.SessionMiddleware',\n    'django.middleware.common.CommonMiddleware',\n    'django.middleware.csrf.CsrfViewMiddleware',\n    'django.contrib.auth.middleware.AuthenticationMiddleware',\n    'django.contrib.messages.middleware.MessageMiddleware',\n    'django.middleware.clickjacking.XFrameOptionsMiddleware',\n]",
         "detail": "simple_site.settings",
         "documentation": {}
     },

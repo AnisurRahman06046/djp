@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from food.forms import ContactForm
 
 # Create your views here.
 def home(request):
@@ -56,3 +57,30 @@ def home(request):
     ]
 
     return render(request,'index.html',{'meals':data})
+
+
+
+def User(request):
+    return render(request,'form.html')
+
+def about(request):
+    if request.method == 'POST':
+        name = request.POST.get('username')
+        email = request.POST.get('email')
+        return render(request,'about.html',{'name':name,'email':email})
+    return render(request,'about.html')
+
+
+def contact(request):
+    if request.method=='POST':
+        form = ContactForm(request.POST,request.FILES)
+        if form.is_valid():
+            file = form.cleaned_data['file']
+            with open('./food/upload/'+ file.name, 'wb+') as dest:
+                for chunk in file.chunks():
+                    dest.write(chunk)
+            print(form.cleaned_data)
+            return render(request,'djangoform.html',{'form':form})
+    else:
+        form = ContactForm()
+    return render(request,'djangoform.html',{'form':form})
