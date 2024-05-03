@@ -6,3 +6,8 @@ class Student(models.Model):
     roll = models.IntegerField(primary_key=True)
     address = models.TextField()
     email = models.EmailField(default='test@gmail.com')
+    
+    def __str__(self):
+        return f'Name : {self.name} Roll: {self.roll}'
+        
+        

@@ -210,7 +210,7 @@
         "kind": 6,
         "importPath": "food.models",
         "description": "food.models",
-        "peekOfCode": "class Student(models.Model):\n    name = models.CharField(max_length=20)\n    roll = models.IntegerField(primary_key=True)\n    address = models.TextField()\n    email = models.EmailField(default='test@gmail.com')",
+        "peekOfCode": "class Student(models.Model):\n    name = models.CharField(max_length=20)\n    roll = models.IntegerField(primary_key=True)\n    address = models.TextField()\n    email = models.EmailField(default='test@gmail.com')\n    def __str__(self):\n        return f'Name : {self.name} Roll: {self.roll}'",
         "detail": "food.models",
         "documentation": {}
     },
@@ -219,7 +219,7 @@
         "kind": 5,
         "importPath": "food.urls",
         "description": "food.urls",
-        "peekOfCode": "urlpatterns = [\n    path('', views.home),\n    path('user/',views.User,name='User'),\n    path('about/',views.about,name='about'),\n    path('contact/',views.contact,name='contact')\n]",
+        "peekOfCode": "urlpatterns = [\n    path('', views.home),\n    path('user/',views.User,name='User'),\n    path('about/',views.about,name='about'),\n    path('contact/',views.contact,name='contact'),\n    path(\"users/\",views.Users,name='Users')\n]",
         "detail": "food.urls",
         "documentation": {}
     },
@@ -256,6 +256,15 @@
         "importPath": "food.views",
         "description": "food.views",
         "peekOfCode": "def contact(request):\n    if request.method=='POST':\n        form = ContactForm(request.POST,request.FILES)\n        if form.is_valid():\n            file = form.cleaned_data['file']\n            with open('./food/upload/'+ file.name, 'wb+') as dest:\n                for chunk in file.chunks():\n                    dest.write(chunk)\n            print(form.cleaned_data)\n            return render(request,'djangoform.html',{'form':form})",
+        "detail": "food.views",
+        "documentation": {}
+    },
+    {
+        "label": "Users",
+        "kind": 2,
+        "importPath": "food.views",
+        "description": "food.views",
+        "peekOfCode": "def Users(request):\n    student = models.Student.objects.all()\n    return render(request,'users.html',{'data':student})",
         "detail": "food.views",
         "documentation": {}
     },

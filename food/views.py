@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from food.forms import ContactForm
-
+from . import models
 # Create your views here.
 def home(request):
     data = [
@@ -84,3 +84,9 @@ def contact(request):
     else:
         form = ContactForm()
     return render(request,'djangoform.html',{'form':form})
+
+
+
+def Users(request):
+    student = models.Student.objects.all()
+    return render(request,'users.html',{'data':student})
