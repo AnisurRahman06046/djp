@@ -218,7 +218,16 @@
         "kind": 6,
         "importPath": "food.models",
         "description": "food.models",
-        "peekOfCode": "class Student(models.Model):\n    name = models.CharField(max_length=20)\n    roll = models.IntegerField(primary_key=True)\n    address = models.TextField()\n    email = models.EmailField(default='test@gmail.com')\n    def __str__(self):\n        return f'Name : {self.name} Roll: {self.roll}'",
+        "peekOfCode": "class Student(models.Model):\n    name = models.CharField(max_length=20)\n    roll = models.IntegerField(primary_key=True)\n    address = models.TextField()\n    email = models.EmailField(default='test@gmail.com')\n    def __str__(self):\n        return f'Name : {self.name} Roll: {self.roll}'\nclass StudentModel(models.Model):\n    roll = models.BigIntegerField(primary_key=True)\n    name = models.CharField(max_length=20)",
+        "detail": "food.models",
+        "documentation": {}
+    },
+    {
+        "label": "StudentModel",
+        "kind": 6,
+        "importPath": "food.models",
+        "description": "food.models",
+        "peekOfCode": "class StudentModel(models.Model):\n    roll = models.BigIntegerField(primary_key=True)\n    name = models.CharField(max_length=20)\n    father_name = models.CharField(max_length=20)\n    address = models.TextField()",
         "detail": "food.models",
         "documentation": {}
     },
